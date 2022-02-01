@@ -1,0 +1,39 @@
+#cluster-map{
+    width: 100%;
+    height: 500px
+}
+
+#map{
+    width: 100%;
+    height: 350px;
+}
+
+#name{
+    border-color: transparent;
+    border-radius: 5cm;
+}
+
+textarea{
+    resize: none;
+    box-sizing:border-box;
+    width: 100%;
+}
+
+#viewBtn{
+    margin-right: 0;
+    margin-left:auto;
+    display: block;
+}
+
+.card-todo{
+    background-color: #eeeeee;
+}
+
+
+#checkBtn{
+    width: 80px;
+}
+
+th, td{
+    text-align: center;
+}
