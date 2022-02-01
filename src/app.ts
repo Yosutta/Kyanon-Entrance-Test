@@ -219,9 +219,9 @@ createConnection().then(connection => {
         res.render('user/getassignedtask', { req, foundTodos, foundUser: foundUser[0] })
     })
 
-    // app.get('*', (req, res) => {
-    //     res.redirect('/get-to-do')
-    // })
+    app.get('*', (req, res) => {
+        res.redirect('/sign-in')
+    })
 
     app.listen(8000, () => {
         console.log('Listening on port 8000')
