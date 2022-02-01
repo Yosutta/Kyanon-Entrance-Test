@@ -1,7 +1,7 @@
 <h1>Kyanon NodeJS Entrance Test</h1>
  
-Cách deploy code ở local machine__
-  + Lệnh để tải thư viện và chạy ứng dụng__
+Cách deploy code ở local machine<br />
+  + Lệnh để tải thư viện và chạy ứng dụng<br />
     Bật git bash và tải project về bằng cách nhập câu lệnh sau:__
     `git clone https://github.com/Yosutta/Kyanon-Entrance-Test.git`__
   
