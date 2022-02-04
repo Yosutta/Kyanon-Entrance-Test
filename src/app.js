@@ -105,8 +105,8 @@ function authenticateToken(req, res, next) {
                     if (foundUser) {
                         if (foundUser.password === req.body.password) {
                             token = generateJSONAccessToken({ username: req.body.username, password: req.body.password });
-                            res.cookie('jwt', token, { httpOnly: true, secure: true, maxAge: 1800000 });
-                            res.redirect('/add-to-do');
+                            res.cookie('jwt', token, { httpOnly: true, secure: false, maxAge: 1800000 });
+                            res.status(404).redirect('/add-to-do');
                         }
                         else
                             res.send(result);
@@ -121,7 +121,7 @@ function authenticateToken(req, res, next) {
         res.clearCookie('jwt');
         res.redirect('/sign-in');
     });
-    app.get('/get-to-do', authenticateToken, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    app.get('/get-all-to-do', authenticateToken, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
         var foundUser, foundTodos;
         return __generator(this, function (_a) {
             switch (_a.label) {
@@ -138,7 +138,7 @@ function authenticateToken(req, res, next) {
             }
         });
     }); });
-    app.get('/to-do/:id', authenticateToken, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    app.get('/get-to-do-by-id/:id', authenticateToken, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
         var foundUser, foundTodo, allUsersExclude, dateOfCompletion, dateOfCreation, dateOfModification, datetime;
         return __generator(this, function (_a) {
             switch (_a.label) {
@@ -176,11 +176,13 @@ function authenticateToken(req, res, next) {
             switch (_b.label) {
                 case 0:
                     _a = req.body, name = _a.name, description = _a.description, dateofcompletion = _a.dateofcompletion;
+                    console.log(req.body.dateofcompletion);
                     status = 'new';
                     return [4 /*yield*/, userRepo
                             .find({ where: { 'username': req.user.username } })];
                 case 1:
                     foundUser = _b.sent();
+                    console.log(dateofcompletion);
                     date = new Date().getTime();
                     dateString = new Date(date);
                     newTodo = new todo_1.Todo();
@@ -194,7 +196,7 @@ function authenticateToken(req, res, next) {
                     return [4 /*yield*/, todoRepo.save(newTodo).catch(function (err) { return console.log(err); })];
                 case 2:
                     _b.sent();
-                    res.redirect('/get-to-do');
+                    res.redirect('/get-all-to-do');
                     return [2 /*return*/];
             }
         });
@@ -205,7 +207,7 @@ function authenticateToken(req, res, next) {
                 case 0: return [4 /*yield*/, todoRepo.delete(req.params.id)];
                 case 1:
                     _a.sent();
-                    res.redirect('/get-to-do');
+                    res.redirect('/get-all-to-do');
                     return [2 /*return*/];
             }
         });
@@ -231,7 +233,7 @@ function authenticateToken(req, res, next) {
                             .execute()];
                 case 1:
                     _b.sent();
-                    res.redirect('/get-to-do');
+                    res.redirect('/get-all-to-do');
                     return [2 /*return*/];
             }
         });
@@ -269,7 +271,7 @@ function authenticateToken(req, res, next) {
                 case 4:
                     _a.sent();
                     _a.label = 5;
-                case 5: return [2 /*return*/, res.status(200)];
+                case 5: return [2 /*return*/, res.sendStatus(200)];
             }
         });
     }); });
@@ -326,9 +328,9 @@ function authenticateToken(req, res, next) {
             }
         });
     }); });
-    // app.get('*', (req, res) => {
-    //     res.redirect('/get-to-do')
-    // })
+    app.get('*', function (req, res) {
+        res.redirect('/sign-in');
+    });
     app.listen(8000, function () {
         console.log('Listening on port 8000');
     });

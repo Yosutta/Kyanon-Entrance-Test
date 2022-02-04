@@ -64,8 +64,8 @@ createConnection().then(connection => {
         if (foundUser) {
             if (foundUser.password === req.body.password) {
                 const token = generateJSONAccessToken({ username: req.body.username, password: req.body.password })
-                res.cookie('jwt', token, { httpOnly: true, secure: true, maxAge: 1800000 })
-                res.redirect('/add-to-do')
+                res.cookie('jwt', token, { httpOnly: true, secure: false, maxAge: 1800000 })
+                res.status(404).redirect('/add-to-do')
             }
             else res.send(result)
         }
@@ -77,7 +77,7 @@ createConnection().then(connection => {
         res.redirect('/sign-in')
     })
 
-    app.get('/get-to-do', authenticateToken, async (req: IGetUserAuthInfoRequest, res) => {
+    app.get('/get-all-to-do', authenticateToken, async (req: IGetUserAuthInfoRequest, res) => {
         const foundUser = await userRepo
             .find({ where: { 'username': req.user.username } })
         const foundTodos = await todoRepo
@@ -86,7 +86,7 @@ createConnection().then(connection => {
         res.render('todo/get', { req, foundTodos })
     })
 
-    app.get('/to-do/:id', authenticateToken, async (req: IGetUserAuthInfoRequest, res) => {
+    app.get('/get-to-do-by-id/:id', authenticateToken, async (req: IGetUserAuthInfoRequest, res) => {
         const foundUser = await userRepo
             .find({ where: { 'username': req.user.username } })
 
@@ -115,9 +115,12 @@ createConnection().then(connection => {
 
     app.post('/add-to-do', authenticateToken, async (req: IGetUserAuthInfoRequest, res) => {
         const { name, description, dateofcompletion } = req.body
+        console.log(req.body.dateofcompletion)
         let status = 'new'
         const foundUser = await userRepo
             .find({ where: { 'username': req.user.username } })
+
+        console.log(dateofcompletion)
 
         const date = new Date().getTime()
         const dateString = new Date(date)
@@ -133,12 +136,12 @@ createConnection().then(connection => {
 
         await todoRepo.save(newTodo).catch((err) => console.log(err))
 
-        res.redirect('/get-to-do')
+        res.redirect('/get-all-to-do')
     })
 
     app.post('/remove-to-do/:id', authenticateToken, async (req: IGetUserAuthInfoRequest, res) => {
         await todoRepo.delete(req.params.id)
-        res.redirect('/get-to-do')
+        res.redirect('/get-all-to-do')
     })
 
     app.post('/update-to-do/:id', authenticateToken, async (req: IGetUserAuthInfoRequest, res) => {
@@ -156,7 +159,7 @@ createConnection().then(connection => {
             })
             .where("id= :id", { id: req.params.id })
             .execute()
-        res.redirect('/get-to-do')
+        res.redirect('/get-all-to-do')
     })
 
     app.post('/update-to-do/:id/status', authenticateToken, async (req: IGetUserAuthInfoRequest, res) => {
@@ -185,7 +188,7 @@ createConnection().then(connection => {
                 .execute()
         }
 
-        return res.status(200)
+        return res.sendStatus(200)
     })
 
     app.get('/get-all-user', authenticateToken, async (req: IGetUserAuthInfoRequest, res) => {
