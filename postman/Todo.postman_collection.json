@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "2070090d-3cea-4d33-a4df-b9d75a306235",
+		"name": "Todo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get-All-To-Do",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:8000/get-all-to-do",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"get-all-to-do"
+					]
+				},
+				"description": "Render a page to show the current logged in user their todos. "
+			},
+			"response": []
+		},
+		{
+			"name": "Add-To-Do",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/add-to-do",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"add-to-do"
+					]
+				},
+				"description": "Render a form for the user to input a { name, description, dateOfCompletion} to create a new todo for themselves."
+			},
+			"response": []
+		},
+		{
+			"name": "Get-To-Do-By-Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/get-to-do-by-id/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"get-to-do-by-id",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "032cdb44-a3e2-44d9-810e-a8f30151d215"
+						}
+					]
+				},
+				"description": "\\- Return a form for the current user to edit the selected todo.\n\nparams\n\n\\+ id : the id of the todo that needs to be taken\n\n\\- The current user can also assign their task to a different user in the system"
+			},
+			"response": []
+		},
+		{
+			"name": "Add-To-Do",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Send my old friend an email",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Caught up with all the work, i haven't been able to to meet up with anyone especially my old friend Bob. Lets write an email to invite him to a breakfast this Sunday.",
+							"type": "text"
+						},
+						{
+							"key": "dateofcompletion",
+							"value": "2024-04-04T20:00:00",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/add-to-do",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"add-to-do"
+					]
+				},
+				"description": "Add a new todo with the following data body: { name, description, dateofcompletion }\n\nexample:\n\nbody:{\n\n\\+ name : 'Send my old friend an email'\n\n\\+ description: 'Caught up with all the work, i haven't been able to to meet up with anyone especially my old friend Bob. Lets write an email to invite him to a breakfast this Sunday. '\n\n\\+ dateofcompletion: 2024-04-04T20:00:00\n\n  \n}\n\n*note: dateofcompletion has a format of YYYY/mm/dd hh:m:sec"
+			},
+			"response": []
+		},
+		{
+			"name": "Remove-To-Do",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/remove-to-do/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"remove-to-do",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "7e8d3c5c-7ff9-4b21-81fa-e03124f98032"
+						}
+					]
+				},
+				"description": "Remove a chosen todo from the currently logged in user.\n\nparams\n\n\\+ id : the id of the todo that needs to be removed"
+			},
+			"response": []
+		},
+		{
+			"name": "Update-To-Do",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Go get some groceries from CO.OP MART",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "I have to go pick up some veggies and fruits at the local supermarket coopmart.",
+							"type": "text"
+						},
+						{
+							"key": "dateofcompletion",
+							"value": "2022-02-05T04:00:00",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/update-to-do/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"update-to-do",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "032cdb44-a3e2-44d9-810e-a8f30151d215"
+						}
+					]
+				},
+				"description": "Update todo with any of the following body data: { name, description, dateofcompletion }\n\nparams\n\n\\+ id: the id of the todo that needs to be updated\n\nExample:\n\nbody:{\n\n\\+ name : 'Go get some groceries from CO.OP MART'\n\n\\+ description: 'I have to go pick up some veggies and fruits at the local supermarket coopmart.'\n\n\\+ dateofcompletion: 2022-02-05T04:00:00  \n}\n\n*note: dateofcompletion has a format of YYYY/mm/dd hh:m:sec"
+			},
+			"response": []
+		},
+		{
+			"name": "Update-To-Do-Status",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/update-to-do/:id/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"update-to-do",
+						":id",
+						"status"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "032cdb44-a3e2-44d9-810e-a8f30151d215"
+						}
+					]
+				},
+				"description": "\\- Send a request to the server to change selected todo's status.\n\nparams\n\n\\+ id : the id of the todo's status that needs to be changed\n\n\\- Return 200 status after execution"
+			},
+			"response": []
+		},
+		{
+			"name": "Assign-To-Do",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/assign-to-do/:todoid/:userid",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"assign-to-do",
+						":todoid",
+						":userid"
+					],
+					"variable": [
+						{
+							"key": "todoid",
+							"value": "a19191bf-24ce-41e5-9e4a-28b609179394"
+						},
+						{
+							"key": "userid",
+							"value": "4235a09f-aa1f-4fe7-bded-a76261a32f57"
+						}
+					]
+				},
+				"description": "Assign a todo of the currently logged in user to a different user in the system.\n\nparams\n\n\\+ todoid: the todo id of the current user\n\n\\+ userid: the id of another user to assign the todo"
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,54 @@
+{
+	"info": {
+		"_postman_id": "36ae9906-2721-48fb-a786-75e84baaa751",
+		"name": "User",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get-All-User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/get-all-user",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"get-all-user"
+					]
+				},
+				"description": "Shows all users in the system excluding the current user."
+			},
+			"response": []
+		},
+		{
+			"name": "Get-All-Task-By-User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/get-all-task-by-user/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"get-all-task-by-user",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "4235a09f-aa1f-4fe7-bded-a76261a32f57"
+						}
+					]
+				},
+				"description": "Returns all assigned and created todos of a user.\n\nparams\n\n\\+ id : userid to return todos"
+			},
+			"response": []
+		}
+	]
+}
