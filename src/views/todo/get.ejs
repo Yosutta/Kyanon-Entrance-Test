@@ -28,7 +28,7 @@
             </div>
             <div class="navbar-nav ml-auto">
                 <% if(req.user) %>
-                    <a class="nav-link" href="/get-to-do">
+                    <a class="nav-link" href="/get-all-to-do">
                         <%= req.user.username %>
                     </a>
                     <a class="nav-link" href="/log-out">Log out</a>
@@ -36,7 +36,7 @@
         </div>
     </nav>
     <main class="container mt-5">
-        <h1>All the todos</h1>
+        <h1>My todos</h1>
         <div class="mb-3">
             <div class="row">
                 <% for(let i=0;i<foundTodos.length;i++){ %>
@@ -69,10 +69,10 @@
                         </p>
                         <% if(foundTodos[i].status==='new' ) {%>
                             <a class="btn btn-primary float-right mb-2" id="viewBtn"
-                                href="/to-do/<%= foundTodos[i].id %> ">Edit</a>
+                                href="/get-to-do-by-id/<%= foundTodos[i].id %> ">Edit</a>
                             <% }else{ %>
                                 <a class="btn btn-primary float-right mb-2" id="viewBtn"
-                                    href="/to-do/<%= foundTodos[i].id %> ">View</a>
+                                    href="/get-to-do-by-id/<%= foundTodos[i].id %> ">View</a>
                                 <% } %>
                     </div>
                     <div class="col-md-3"></div>
