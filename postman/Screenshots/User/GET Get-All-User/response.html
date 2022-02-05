@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All users</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="/app.css">
+</head>
+
+<body class="d-flex flex-column vh-100">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Todo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="/add-to-do">Add todo</a>
+                    <a class="nav-link" active href="/get-all-user">Users</a>
+                </div>
+            </div>
+            <div class="navbar-nav ml-auto">
+                
+                    <a class="nav-link" href="/get-all-to-do">
+                        tinphu
+                    </a>
+                    <a class="nav-link" href="/log-out">Log out</a>
+            </div>
+        </div>
+    </nav>
+    <main class="container mt-5">
+
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <table class="border w-100">
+                    <tr class="border">
+                        <th class="border">Username</th>
+                        <th></th>
+                    </tr>
+                    
+                        <tr class="border">
+                            <td class="border">
+                                grafiticraft
+                            </td>
+                            <td><a class="btn btn-sm btn-info text-white"
+                                    href="/get-all-task-by-user/4235a09f-aa1f-4fe7-bded-a76261a32f57">View
+                                    assigned tasks<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" class="bi bi-arrow-bar-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8zm-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5z" />
+                                    </svg></a></td>
+                        </tr>
+                        
+                        <tr class="border">
+                            <td class="border">
+                                rubic
+                            </td>
+                            <td><a class="btn btn-sm btn-info text-white"
+                                    href="/get-all-task-by-user/879a6090-d764-4024-b0d1-525b7ee953da">View
+                                    assigned tasks<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" class="bi bi-arrow-bar-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8zm-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5z" />
+                                    </svg></a></td>
+                        </tr>
+                        
+                        <tr class="border">
+                            <td class="border">
+                                tinphu
+                            </td>
+                            <td><a class="btn btn-sm btn-info text-white"
+                                    href="/get-all-task-by-user/f937033a-7a57-46ac-95f5-913c27bcc457">View
+                                    assigned tasks<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" class="bi bi-arrow-bar-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8zm-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5z" />
+                                    </svg></a></td>
+                        </tr>
+                        
+                </table>
+            </div>
+            <div class="col-3"></div>
+        </div>
+
+    </main>
+    <footer class="footer bg-dark py-3 mt-auto">
+        <div class="container">
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
